@@ -1,0 +1,9 @@
+python pred.py\
+    --output_dir ./output/T231\
+    --ipa_depth 8\
+    --device_id 0\
+    --targets ./T231_targets\
+    --embedding_dir ./examples\
+    --point_scale 20\
+    --model_dir /home/kihara/zhan1797/Desktop/multimer_idp/test_multimer_ft_3k_fullmsa_finetune_paper0.1/checkpoint-100-9595\
+    #--model_dir /home/kihara/zhan1797/Desktop/multimer_idp/test_multimer_ft_3k_fullmsa_finetune_paper_bb_turtle_clip1/checkpoint-47-6227

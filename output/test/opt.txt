@@ -1,0 +1,13 @@
+----------------- Options ---------------
+                  contact: False                         
+                     cuda: True                          
+                device_id: 0                             
+            embedding_dir: ./examples                    
+                ipa_depth: 8                             
+                model_dir: /home/kihara/zhan1797/Desktop/multimer_idp/test_multimer_ft_3k_fullmsa_finetune_paper0.1/checkpoint-100-9595
+                    n_gpu: 1                             
+               output_dir: ./output/test                 
+              point_scale: 20                            
+                     seed: 999                           
+                  targets: ./test_target                 
+----------------- End -------------------
