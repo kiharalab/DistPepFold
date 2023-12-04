@@ -1,4 +1,4 @@
-# Distance-AF
+# DistPepFold
 
 <a href="https://github.com/marktext/marktext/releases/latest">
    <img src="https://img.shields.io/badge/DistPepFold-v1.0.0-green">
