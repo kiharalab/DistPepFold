@@ -1,0 +1,8 @@
+dm-tree==0.1.8
+docker==5.0.0
+immutabledict==2.0.0
+jax==0.4.19
+jax==0.4.23
+ml-collections==0.1.0
+numpy==1.24.3
+pandas==2.0.3
