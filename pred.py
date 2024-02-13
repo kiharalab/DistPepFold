@@ -126,7 +126,7 @@ def main():
         model.load_state_dict(
             torch.load(f'{args.model_dir}/model_state_dict.pt', map_location='cpu')
         )
-        model.cuda(args.device_id)
+        #model.cuda(args.device_id)
         print(f'Checkpoints (model) loaded from {args.model_dir}')
 
     if args.cuda:
