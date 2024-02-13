@@ -67,17 +67,17 @@ def val(args, model, val_dataloader):
             chain_index=batch['test']['chain_idx']
         )
         pdb_lines = protein_alt.to_pdb(prot_test)
-        print(targets)
+        #print(targets)
         output_dir_pred = os.path.join(args.output_dir, f"{targets}_pred_all_full.pdb")
         with open(output_dir_pred, 'w') as f:
             f.write(pdb_lines)
-        confidence_list.update({targets: docking_score.item()})
-    ranked_order = [m for m, _ in sorted(confidence_list.items(), key=lambda x: x[1], reverse=True)]
-    ranking_output_path = os.path.join(args.output_dir , 'ranking_debug.json')
-    with open(ranking_output_path, 'w') as f:
-        label = 'iptm+ptm'
-        f.write(json.dumps(
-            {label: confidence_list, 'order': ranked_order}, indent=4))
+        #confidence_list.update({targets: docking_score.item()})
+    # ranked_order = [m for m, _ in sorted(confidence_list.items(), key=lambda x: x[1], reverse=True)]
+    # ranking_output_path = os.path.join(args.output_dir , 'ranking_debug.json')
+    # with open(ranking_output_path, 'w') as f:
+    #     label = 'iptm+ptm'
+    #     f.write(json.dumps(
+    #         {label: confidence_list, 'order': ranked_order}, indent=4))
     
     return "done"
 

@@ -55,17 +55,14 @@ def get_chain_index(sequences):
 class MultimerDataset(Dataset):
 
     def __init__(self, args):
-        with open(args.targets, 'r') as f:
-            self.targets = f.read().splitlines()
         self.args = args
         
     def __len__(self):
-        return len(self.targets)
+        return 1
 
     def __getitem__(self, index):
-        target = self.targets[index]
-        embedding_dir = join(self.args.embedding_dir, target)
-        fasta = join(embedding_dir, f'{target}.fasta')
+        embedding_dir = self.args.embedding_dir
+        fasta = join(embedding_dir, f'input.fasta')
 
         with open(fasta, 'r') as f:
             fasta_str = f.read()
@@ -73,10 +70,10 @@ class MultimerDataset(Dataset):
         target_lengths = [len(a) for a in  sequences]
         target_seq_len = sum(target_lengths)
         data = {}
-        data["target"] = target
+        data["target"] = 'test'
         data['seq_length'] = target_seq_len
         #loading the embeddings
-        emd_dir = join(embedding_dir, f'{target}/model_1_multimer.npz')
+        emd_dir = join(embedding_dir, f'model_1_multimer.npz')
         emd = np.load(emd_dir)
         single = torch.tensor(emd['single'])
         pair = torch.tensor(emd['pair'])

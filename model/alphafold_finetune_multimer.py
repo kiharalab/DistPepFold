@@ -26,7 +26,7 @@ class AlphaFold_Multimer(nn.Module):
         self.structure_module = StructureModule(trans_scale_factor=args.point_scale, no_blocks=args.ipa_depth, no_heads_ipa=12, c_ipa=16, dropout_rate=0.1) #no_heads_ipa=24, c_ipa=64
         self.plddt =  PerResidueLDDTCaPredictor()
         self.experimentally_resolved = ExperimentallyResolvedHead()
-        self.tm = TMScoreHead()
+        #self.tm = TMScoreHead()
        
         self.args = args
 
@@ -164,12 +164,13 @@ class AlphaFold_Multimer(nn.Module):
         lddt = self.plddt(outputs['single'])
         plddt = compute_plddt(lddt)
 
-        pae_logits = self.tm(embedding)
+        docking_score = 0 # currently the model deos not support docking score
+        #pae_logits = self.tm(embedding)
         #compute docking socre
-        ptm = compute_tm(pae_logits)
-        iptm = compute_tm(pae_logits, asym_id=protein_test['chain_idx'], interface=True)
-        docking_score = ptm * 0.2 + iptm * 0.8
-        print(docking_score)
+        # ptm = compute_tm(pae_logits)
+        # iptm = compute_tm(pae_logits, asym_id=protein_test['chain_idx'], interface=True)
+        # docking_score = ptm * 0.2 + iptm * 0.8
+        #print(docking_score)
         return outputs['positions'], plddt, docking_score
 
     def forward(self, embedding, single_repr, aatype, batch_gt, batch_gt_frames, 
