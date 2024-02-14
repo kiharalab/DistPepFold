@@ -18,6 +18,8 @@ Contact: Daisuke Kihara (dkihara@purdue.edu)
 
 For technical problems or questions, please reach to Zicong Zhang (zhan1797@purdue.edu).
 
+[`Colab Notebook`](https://colab.research.google.com/drive/1Q1ecUy2oxEpXC03eLBxCcj1UTKA8mfPH?usp=sharing) 
+
 ## Installation
 <details>
 
