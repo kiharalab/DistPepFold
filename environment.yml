@@ -1,4 +1,4 @@
-name: e2e
+name: distpepfold-test
 channels:
   - pytorch3d
   - bottler

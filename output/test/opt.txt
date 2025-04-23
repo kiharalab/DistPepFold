@@ -1,0 +1,13 @@
+----------------- Options ---------------
+                  contact: False                         
+                     cuda: True                          
+                device_id: 0                             
+            embedding_dir: ./examples/5mlu_M             
+                ipa_depth: 8                             
+                model_dir: ./weights                     
+                    n_gpu: 1                             
+               output_dir: ./output/test                 
+              point_scale: 20                            
+                     seed: 999                           
+                  targets: /train_chains                 
+----------------- End -------------------
