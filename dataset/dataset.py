@@ -5,6 +5,8 @@ import numpy as np
 from dataset.openfold_util import residue_constants
 from dataset.af2_util import all_atom
 
+import pickle as pkl
+import os
 def parse_fasta(fasta_string: str):
   """Parses FASTA string and returns list of strings with amino-acid sequences.
 
@@ -73,11 +75,24 @@ class MultimerDataset(Dataset):
         data["target"] = 'test'
         data['seq_length'] = target_seq_len
         #loading the embeddings
-        emd_dir = join(embedding_dir, f'model_1_multimer.npz')
-        emd = np.load(emd_dir)
-        single = torch.tensor(emd['single'])
-        pair = torch.tensor(emd['pair'])
-        single_test, pair_test = single.unsqueeze(0), pair.unsqueeze(0)
+        pickle = False
+        for file in os.listdir(embedding_dir):
+            if file.endswith('.pkl'):
+                pickle = True
+                emb_file = join(embedding_dir, file)
+                break
+        if pickle:
+          with open(emb_file, 'rb') as f:
+              emd = pkl.load(f)
+          single = torch.tensor(emd['representations']['single'])
+          pair = torch.tensor(emd['representations']['pair'])
+          single_test, pair_test = single.unsqueeze(0), pair.unsqueeze(0)
+        else:
+          emd_dir = join(embedding_dir, f'model_1_multimer.npz')
+          emd = np.load(emd_dir)
+          single = torch.tensor(emd['single'])
+          pair = torch.tensor(emd['pair'])
+          single_test, pair_test = single.unsqueeze(0), pair.unsqueeze(0)
 
         aatype = get_aatype(sequences)
         #print(aatype)
