@@ -77,7 +77,7 @@ class MultimerDataset(Dataset):
         #loading the embeddings
         pickle = False
         for file in os.listdir(embedding_dir):
-            if file.endswith('.pkl'):
+            if file.endswith('.pickle'):
                 pickle = True
                 emb_file = join(embedding_dir, file)
                 break
